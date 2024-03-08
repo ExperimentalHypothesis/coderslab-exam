@@ -43,16 +43,14 @@ def index():
         return render_template('form.html')
 
     name, email = request.form['name'], request.form['email']
-    if not name or '@' not in email:
-        error = "Error: Invalid data. Provide a name and a valid email."
-        return render_template('form.html', error=error)
+    if not name: # @ checked on FE
+        return render_template('form.html', error="Error: Name cannot be empty")
     try:
         insert_into_readers(name, email)
-        success = "Data successfully submitted."
-        return render_template('form.html', success=success)
+        return render_template('form.html', success= "Data successfully submitted.")
     except psycopg2.Error as e:
-        error = f"Error: {str(e)}"
-        return render_template('form.html', error=error)
+        logging.error(e)
+        return render_template('form.html', error="Error: Failed insert")
 
 
 if __name__ == '__main__':

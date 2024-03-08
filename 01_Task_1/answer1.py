@@ -7,7 +7,4 @@ def check_character(s: str, ch):
 
 
 if __name__ == "__main__":
-    print(check_character('Order of the Phoenix', 'o'))
-
-    # zakazano, ale lepsi je
-    print("Order of the Phoenix".count("o"))
+    assert check_character('Order of the Phoenix', 'o') == 2

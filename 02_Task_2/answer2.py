@@ -12,8 +12,7 @@ def get_random(number=3):
             return sorted(list(s))
 
 
-
 if __name__ == "__main__":
-    print(get_random(10))
+    print(get_random(12))
 
 
